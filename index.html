@@ -533,7 +533,10 @@ function sendBooking(){
   if (!h2) return;
   function update() {
     var fontSize = parseFloat(getComputedStyle(h2).fontSize);
-    var h2TopInSection = h2.offsetTop;
+    // Position von h2 relativ zur Section (unabhängig von scroll)
+    var sR = section.getBoundingClientRect();
+    var hR = h2.getBoundingClientRect();
+    var h2TopInSection = hR.top - sR.top;
     // Ziel: unterkante der ersten Textzeile (zwischen MIXES / LIVESETS)
     var targetY = h2TopInSection + fontSize;
     // Bild: 1600x2400, Augen bei ~49% von oben
