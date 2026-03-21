@@ -312,9 +312,9 @@ footer a:hover{color:#E4B824}
   <div class="calendar-layout fade-in">
     <div>
       <div class="cal-month-nav">
-        <button class="cal-nav-btn" onclick="prevMonth()">&#8249;</button>
+        <button class="cal-nav-btn" id="cal-prev" onclick="prevMonth()">&#8249;</button>
         <h3 id="cal-title"></h3>
-        <button class="cal-nav-btn" onclick="nextMonth()">&#8250;</button>
+        <button class="cal-nav-btn" id="cal-next" onclick="nextMonth()">&#8250;</button>
       </div>
       <div class="cal-header"><span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span></div>
       <div class="cal-grid" id="cal-grid"></div>
@@ -490,7 +490,9 @@ window.addEventListener('popstate',()=>{if(window.location.hash==='#/links')show
 
 // Calendar
 const blockedDates=[];
-let cy=new Date().getFullYear(),cm=new Date().getMonth();
+const _now=new Date();
+const NOW_Y=_now.getFullYear(),NOW_M=_now.getMonth();
+let cy=NOW_Y,cm=NOW_M;
 const mn=['JANUAR','FEBRUAR','MÄRZ','APRIL','MAI','JUNI','JULI','AUGUST','SEPTEMBER','OKTOBER','NOVEMBER','DEZEMBER'];
 function isBlocked(y,m,d){return blockedDates.some(b=>b[0]===y&&b[1]===m&&b[2]===d)}
 function renderCalendar(){
@@ -503,9 +505,23 @@ function renderCalendar(){
     const it=td.getFullYear()===cy&&td.getMonth()===cm&&td.getDate()===d;
     e.className='cal-day'+(isBlocked(cy,cm,d)?' blocked':'')+( it?' today':'');
     e.textContent=d;g.appendChild(e)}
+  // Buttons an Grenzen dimmen
+  const atMin=(cy===NOW_Y&&cm===NOW_M);
+  const atMax=(cy===NOW_Y+1&&cm===NOW_M)||(cy>NOW_Y+1);
+  document.getElementById('cal-prev').style.opacity=atMin?'0.2':'1';
+  document.getElementById('cal-prev').style.cursor=atMin?'default':'pointer';
+  document.getElementById('cal-next').style.opacity=atMax?'0.2':'1';
+  document.getElementById('cal-next').style.cursor=atMax?'default':'pointer';
 }
-function prevMonth(){if(--cm<0){cm=11;cy--}renderCalendar()}
-function nextMonth(){if(++cm>11){cm=0;cy++}renderCalendar()}
+function prevMonth(){
+  if(cy===NOW_Y&&cm===NOW_M)return;
+  if(--cm<0){cm=11;cy--}renderCalendar()
+}
+function nextMonth(){
+  const nCm=(cm+1)%12,nCy=cm===11?cy+1:cy;
+  if(nCy>NOW_Y+1||(nCy===NOW_Y+1&&nCm>NOW_M))return;
+  cm=nCm;cy=nCy;renderCalendar()
+}
 renderCalendar();
 
 // Booking form
