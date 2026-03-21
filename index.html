@@ -436,10 +436,11 @@ footer a:hover{color:#E4B824}
       <span class="news-date">2024</span><br>
       <a href="https://open.spotify.com/intl-de/artist/1WBLjFSO8AfWx1GIgWIn41" target="_blank" class="news-link">Auf Spotify anh&ouml;ren &rarr;</a>
     </div>
-    <div class="news-card">
+    <div class="news-card" id="news-event-card" style="cursor:pointer" onclick="showDates(null);window.scrollTo(0,0)">
       <div class="news-platform">Event</div>
-      <p style="opacity:.4;font-style:italic;font-size:13px">&larr; N&auml;chstes Event oder Ank&uuml;ndigung &ndash; schick mir die Info.</p>
-      <span class="news-date">Demn&auml;chst</span>
+      <p id="news-event-text" style="margin-bottom:6px">Demnächst</p>
+      <span id="news-event-date" class="news-date"></span><br>
+      <span class="news-link" style="pointer-events:none">Alle Dates ansehen &rarr;</span>
     </div>
   </div>
 </section>
@@ -627,6 +628,7 @@ const NOW_Y=_now.getFullYear(),NOW_M=_now.getMonth();
 let cy=NOW_Y,cm=NOW_M;
 const mn=['JANUAR','FEBRUAR','MÄRZ','APRIL','MAI','JUNI','JULI','AUGUST','SEPTEMBER','OKTOBER','NOVEMBER','DEZEMBER'];
 function isBlocked(y,m,d){return blockedDates.some(b=>b[0]===y&&b[1]===m&&b[2]===d)||bookingDates.some(b=>b.y===y&&b.m===m&&b.d===d)}
+(function(){const today=new Date(NOW_Y,NOW_M,new Date().getDate());const next=bookingDates.filter(b=>new Date(b.y,b.m,b.d)>=today).sort((a,b)=>new Date(a.y,a.m,a.d)-new Date(b.y,b.m,b.d))[0];const et=document.getElementById('news-event-text');const ed=document.getElementById('news-event-date');if(next&&et&&ed){et.textContent=next.city;ed.textContent=next.d+'. '+mn[next.m]+' '+next.y;}else if(et){et.textContent='Demnächst';}})();
 function renderCalendar(){
   document.getElementById('cal-title').textContent=mn[cm]+' '+cy;
   const g=document.getElementById('cal-grid');g.innerHTML='';
