@@ -621,7 +621,7 @@ if(window.location.hash==='#/links')showLinktree();
 window.addEventListener('popstate',()=>{if(window.location.hash==='#/links')showLinktree();else hideLinktree()});
 
 // Calendar
-const blockedDates=[];   // Blocker: [[YYYY,M,D], ...] — goldener Punkt, keine Stadt
+const blockedDates=[[2026,2,28],[2026,3,7],[2026,3,12],[2026,4,9],[2026,4,10],[2026,5,7],[2026,5,20],[2026,6,3],[2026,6,18],[2026,7,15],[2026,8,2],[2026,8,3],[2026,8,4],[2026,8,5],[2026,8,6],[2026,8,7],[2026,8,8],[2026,8,9],[2026,8,24],[2026,9,30]];   // Blocker: [[YYYY,M,D], ...] — goldener Punkt, keine Stadt
 const bookingDates=[{y:2026,m:3,d:30,city:"Braunschweig"},{y:2026,m:4,d:30,city:"Leipzig"},{y:2026,m:6,d:4,city:"Oberhausen"},{y:2026,m:6,d:8,city:"Neustadt-Glewe"},{y:2026,m:6,d:9,city:"Neustadt-Glewe"},{y:2026,m:6,d:10,city:"Neustadt-Glewe"},{y:2026,m:6,d:11,city:"Neustadt-Glewe"},{y:2026,m:6,d:12,city:"Neustadt-Glewe"},{y:2026,m:6,d:23,city:"Bärwalder See"},{y:2026,m:6,d:24,city:"Bärwalder See"},{y:2026,m:6,d:25,city:"Bärwalder See"}];   // Bookings: [{y,m,d,city}, ...] — goldener Punkt + Stadt
 const _now=new Date();
 const NOW_Y=_now.getFullYear(),NOW_M=_now.getMonth();
