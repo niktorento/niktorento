@@ -491,7 +491,7 @@ window.addEventListener('popstate',()=>{if(window.location.hash==='#/links')show
 // Calendar
 const blockedDates=[];
 let cy=new Date().getFullYear(),cm=new Date().getMonth();
-const mn=['JANUAR','FEBRUAR','M&Auml;RZ','APRIL','MAI','JUNI','JULI','AUGUST','SEPTEMBER','OKTOBER','NOVEMBER','DEZEMBER'];
+const mn=['JANUAR','FEBRUAR','MÄRZ','APRIL','MAI','JUNI','JULI','AUGUST','SEPTEMBER','OKTOBER','NOVEMBER','DEZEMBER'];
 function isBlocked(y,m,d){return blockedDates.some(b=>b[0]===y&&b[1]===m&&b[2]===d)}
 function renderCalendar(){
   document.getElementById('cal-title').textContent=mn[cm]+' '+cy;
