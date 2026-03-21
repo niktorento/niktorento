@@ -186,6 +186,8 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spa
 .cal-day.blocked::after{content:'';position:absolute;bottom:5px;width:4px;height:4px;border-radius:50%;background:#E4B824;animation:pulseGold 2s ease-in-out infinite}
 .cal-city{position:absolute;bottom:13px;left:0;right:0;text-align:center;font-size:5.5px;letter-spacing:.3px;color:#E4B824;overflow:hidden;white-space:nowrap;padding:0 2px;line-height:1;text-transform:uppercase}
 .cal-day.today{border:1px solid #C9960A;color:var(--white)}
+.cal-day.clickable{cursor:pointer}
+.cal-day.clickable:hover{background:rgba(201,150,10,.22);color:var(--white)}
 .cal-legend{display:flex;gap:24px;margin-top:18px}
 .legend-item{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--faint)}
 .legend-dot{width:9px;height:9px;border-radius:50%}
@@ -606,6 +608,9 @@ function renderCalendar(){
     e.textContent=d;
     const bk=bookingDates.find(b=>b.y===cy&&b.m===cm&&b.d===d);
     if(bk){const cs=document.createElement('span');cs.className='cal-city';cs.textContent=bk.city;e.appendChild(cs);}
+    const isPast=new Date(cy,cm,d)<new Date(td.getFullYear(),td.getMonth(),td.getDate());
+    if(bk){e.classList.add('clickable');e.addEventListener('click',function(){showDates(null);window.scrollTo(0,0);});}
+    else if(!isPast){e.classList.add('clickable');e.addEventListener('click',function(){document.getElementById('booking').scrollIntoView({behavior:'smooth'});});}
     g.appendChild(e)}
   // Buttons an Grenzen dimmen
   const atMin=(cy===NOW_Y&&cm===NOW_M);
