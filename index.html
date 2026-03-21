@@ -537,9 +537,10 @@ footer a:hover{color:#E4B824}
       <div class="date-item">
         <span class="date-dot"></span>
         <div class="date-info">
-          <span class="date-when">Demnächst</span>
-          <span class="date-where">&larr; Neue Dates kommen bald</span>
+          <span class="date-when">30. APRIL 2026</span>
+          <span class="date-where">Braunschweig — MEC</span>
         </div>
+        <a href="https://www.eventim-light.com/de/a/5dcbbf9b29170500015b5ea4/e/69b4af502a1b6440e5c3f555?fbclid=IwRlRTSAQkvRNleHRuA2FlbQIxMABzcnRjBmFwcF9pZAo2NjI4NTY4Mzc5AAEeaIaAS0paUyOKN5WiBi9IVRVDKjhXdpDdcaBMMAEcRXySbok38uYX7YLiz14_aem_0Y41fToQqncTWsM_hfoy7A" target="_blank" class="btn-gold" style="font-size:9px;padding:8px 14px;letter-spacing:2px;flex-shrink:0">Tickets</a>
       </div>
     </div>
     <a href="#" class="lt-back" onclick="hideDates(event)" style="margin-top:52px">&larr; Zur&uuml;ck zur Website</a>
@@ -587,7 +588,7 @@ window.addEventListener('popstate',()=>{if(window.location.hash==='#/links')show
 
 // Calendar
 const blockedDates=[];   // Blocker: [[YYYY,M,D], ...] — goldener Punkt, keine Stadt
-const bookingDates=[];   // Bookings: [{y,m,d,city}, ...] — goldener Punkt + Stadt
+const bookingDates=[{y:2026,m:3,d:30,city:"Braunschweig"}];   // Bookings: [{y,m,d,city}, ...] — goldener Punkt + Stadt
 const _now=new Date();
 const NOW_Y=_now.getFullYear(),NOW_M=_now.getMonth();
 let cy=NOW_Y,cm=NOW_M;
