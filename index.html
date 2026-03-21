@@ -6,6 +6,7 @@
 <title>Nik Torento – Hard Techno DJ & Producer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <style>
 :root {
   --g1:#2a1f00; --g2:#8B6914; --g3:#C9960A; --g4:#E4B824; --g5:#F5D060; --g6:#FDE99A;
@@ -170,6 +171,21 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spa
 .legend-dot.free{background:var(--black3);border:1px solid #444}
 .cal-note{margin-top:20px;font-size:12px;color:var(--faint);line-height:1.6;letter-spacing:.5px}
 
+/* FLATPICKR DARK THEME */
+.flatpickr-calendar{background:#111;border:1px solid #8B6914;box-shadow:0 8px 32px rgba(0,0,0,.6);font-family:Barlow,sans-serif}
+.flatpickr-month,.flatpickr-weekdays,.flatpickr-weekday{background:#111;color:#E4B824}
+.flatpickr-current-month{color:#E4B824;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px}
+.flatpickr-current-month select,.flatpickr-current-month input.numInput{color:#E4B824;background:#111}
+.numInputWrapper:hover{background:rgba(228,184,36,.08)}
+.flatpickr-day{color:#ccc;border-radius:0}
+.flatpickr-day:hover,.flatpickr-day:focus{background:rgba(228,184,36,.15);border-color:transparent;color:#fff}
+.flatpickr-day.selected,.flatpickr-day.selected:hover{background:#C9960A;border-color:#C9960A;color:#111;font-weight:600}
+.flatpickr-day.today{border-color:#E4B824;color:#E4B824}
+.flatpickr-day.today:hover{background:rgba(228,184,36,.15)}
+.flatpickr-day.disabled,.flatpickr-day.disabled:hover{color:#333;cursor:not-allowed}
+.flatpickr-prev-month,.flatpickr-next-month{color:#E4B824!important;fill:#E4B824!important}
+.flatpickr-prev-month:hover svg,.flatpickr-next-month:hover svg{fill:#FDE99A!important}
+
 /* SOCIAL */
 #social{background:linear-gradient(rgba(6,6,6,0.85),rgba(6,6,6,0.85)),url('images/stage.jpg') center/cover no-repeat;text-align:center;padding:80px 48px}
 .social-links{display:flex;justify-content:center;gap:12px;margin-top:40px;flex-wrap:wrap}
@@ -294,7 +310,7 @@ footer a:hover{color:#E4B824}
         <div class="form-field"><label>E-Mail</label><input type="email" name="email" placeholder="deine@email.de"></div>
       </div>
       <div class="form-row">
-        <div class="form-field"><label>Datum</label><input type="date" name="datum"></div>
+        <div class="form-field"><label>Datum</label><input type="text" name="datum" id="booking-datum" placeholder="Datum wählen…" readonly style="cursor:pointer"></div>
         <div class="form-field"><label>Art des Events</label>
           <select name="event_art"><option value="">Bitte w&auml;hlen&hellip;</option><option>Club / Rave</option><option>Festival</option><option>Open Air</option><option>Private Party</option><option>Sonstiges</option></select>
         </div>
@@ -551,6 +567,16 @@ async function sendBooking(btn){
     btn.textContent='Anfrage absenden';btn.disabled=false;
   }
 }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/de.js"></script>
+<script>
+flatpickr('#booking-datum',{
+  locale:'de',
+  minDate:'today',
+  dateFormat:'d.m.Y',
+  disableMobile:true
+});
 </script>
 </body>
 </html>
