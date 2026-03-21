@@ -118,13 +118,14 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spa
 .corner.br{bottom:10px;right:10px;border-bottom:1px solid #E4B824;border-right:1px solid #E4B824}
 
 /* MIXES */
-#mixes{background:linear-gradient(rgba(6,6,6,0.78),rgba(6,6,6,0.78)),url('images/mixes-bg.jpg') center 49%/cover no-repeat}
-.mixes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:44px}
+#mixes{background:var(--black)}
+.mixes-grid{display:grid;grid-template-columns:1fr;gap:3px;margin-top:44px;max-width:720px}
 .mix-card{position:relative;aspect-ratio:16/9;background:var(--black3);overflow:hidden;display:block;text-decoration:none}
 .mix-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 55%);z-index:1;transition:opacity .3s}
 .mix-card:hover::before{opacity:.5}
 .mix-card-bg{width:100%;height:100%;background:linear-gradient(135deg,#1c1a14,#0a0a08);display:flex;align-items:center;justify-content:center;transition:transform .55s ease}
 .mix-card:hover .mix-card-bg{transform:scale(1.06)}
+.mix-card:hover .mix-card-bg img{transform:scale(1.06)}
 .mix-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:48px;height:48px;border:1px solid #E4B824;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
 .mix-play svg{width:13px} .mix-play svg polygon{fill:#E4B824}
 .mix-card:hover .mix-play{opacity:1}
@@ -356,19 +357,9 @@ footer a:hover{color:#E4B824}
   <h2 class="fade-in">MIXES &amp;<br>LIVESETS</h2>
   <div class="mixes-grid fade-in">
     <a href="https://soundcloud.com/user-762196419/hardtechno-live-set-2026-rave" target="_blank" class="mix-card">
-      <div class="mix-card-bg"><svg width="38" height="38" viewBox="0 0 40 40" fill="none" style="opacity:.2"><circle cx="20" cy="20" r="18" stroke="#C9960A" stroke-width="1"/><polygon points="16,13 29,20 16,27" fill="#C9960A" opacity=".6"/></svg></div>
+      <div class="mix-card-bg"><img src="images/leipzig-preview.jpg" alt="Liveset Leipzig" style="width:100%;height:100%;object-fit:cover;filter:grayscale(100%);opacity:.75;transition:transform .55s ease" onerror="this.style.display='none'"></div>
       <div class="mix-play"><svg viewBox="0 0 16 16"><polygon points="3,1 15,8 3,15"/></svg></div>
       <div class="mix-info"><h3>LIVESET LEIPZIG</h3><span>5.5H &middot; Hard Techno &middot; 2026</span></div>
-    </a>
-    <a href="https://on.soundcloud.com/c1WpkV4Do7WaV3DbNI" target="_blank" class="mix-card">
-      <div class="mix-card-bg"><svg width="38" height="38" viewBox="0 0 40 40" fill="none" style="opacity:.2"><circle cx="20" cy="20" r="18" stroke="#C9960A" stroke-width="1"/><polygon points="16,13 29,20 16,27" fill="#C9960A" opacity=".6"/></svg></div>
-      <div class="mix-play"><svg viewBox="0 0 16 16"><polygon points="3,1 15,8 3,15"/></svg></div>
-      <div class="mix-info"><h3>SOUNDCLOUD</h3><span>Alle Mixes &amp; Sets</span></div>
-    </a>
-    <a href="https://www.youtube.com/@niktorento" target="_blank" class="mix-card">
-      <div class="mix-card-bg"><svg width="38" height="38" viewBox="0 0 40 40" fill="none" style="opacity:.2"><circle cx="20" cy="20" r="18" stroke="#C9960A" stroke-width="1"/><polygon points="16,13 29,20 16,27" fill="#C9960A" opacity=".6"/></svg></div>
-      <div class="mix-play"><svg viewBox="0 0 16 16"><polygon points="3,1 15,8 3,15"/></svg></div>
-      <div class="mix-info"><h3>YOUTUBE</h3><span>Videos &amp; Livesets</span></div>
     </a>
   </div>
 </section>
@@ -524,35 +515,6 @@ function sendBooking(){
   if(!ok){alert('Bitte alle Felder ausfüllen.');return}
   alert('Anfrage abgeschickt! ✓\n\nWir richten noch Formspree ein, damit die Anfrage direkt per E-Mail ankommt.')
 }
-
-// Mixes: Gesicht exakt zwischen "MIXES" und "LIVESETS" positionieren
-(function() {
-  var section = document.getElementById('mixes');
-  if (!section) return;
-  var h2 = section.querySelector('h2');
-  if (!h2) return;
-  function update() {
-    var fontSize = parseFloat(getComputedStyle(h2).fontSize);
-    // Position von h2 relativ zur Section (unabhängig von scroll)
-    var sR = section.getBoundingClientRect();
-    var hR = h2.getBoundingClientRect();
-    var h2TopInSection = hR.top - sR.top;
-    // Ziel: unterkante der ersten Textzeile (zwischen MIXES / LIVESETS)
-    var targetY = h2TopInSection + fontSize;
-    // Bild: 1600x2400, Augen bei ~49% von oben
-    var scale = section.offsetWidth / 1600;
-    var renderedH = 2400 * scale;
-    var excess = renderedH - section.offsetHeight;
-    if (excess <= 0) return;
-    var faceRendered = 2400 * 0.49 * scale;
-    var pct = (faceRendered - targetY) / excess * 100;
-    pct = Math.max(0, Math.min(100, pct));
-    section.style.backgroundPosition = 'center ' + pct.toFixed(1) + '%';
-  }
-  if (document.readyState === 'complete') update();
-  else window.addEventListener('load', update);
-  window.addEventListener('resize', update);
-})();
 </script>
 </body>
 </html>
