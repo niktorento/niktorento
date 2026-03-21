@@ -66,7 +66,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .btn-outline:hover{border-color:#E4B824;color:#F5D060}
 
 .hero-bottom{position:absolute;left:48px;right:48px;bottom:60px;z-index:3;display:flex;justify-content:space-between;align-items:flex-end;pointer-events:none}
-.hero-logo-bottom img{width:280px;max-width:30vw;height:auto;display:block;filter:drop-shadow(0 0 18px rgba(228,184,36,.28));pointer-events:none}.hero-stats{pointer-events:auto}
+.hero-logo-bottom{display:none!important}.hero-stats{pointer-events:auto}
 .hero-stats{display:flex;gap:40px}
 .stat{text-align:center}
 .stat-num{font-family:'Bebas Neue',sans-serif;font-size:36px;background:var(--gold-text);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmerSlow 18s linear infinite;display:block;line-height:1}
@@ -81,7 +81,7 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spa
 .gold-line{width:52px;height:1px;margin:24px 0;background:var(--gold-metal);background-size:200% auto;animation:shimmer 12s linear infinite}
 
 /* BOOKING (2nd section – main CTA) */
-#booking{background:linear-gradient(rgba(6,6,6,0.72),rgba(6,6,6,0.72)),url('images/booking-bg.jpg') 40% center/cover no-repeat}
+#booking{background:linear-gradient(rgba(6,6,6,0.68),rgba(6,6,6,0.68)),url('images/booking-bg.jpg') 20% center/140% auto no-repeat}
 .booking-wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
 .booking-intro p{font-size:15px;line-height:1.8;color:var(--muted);margin-bottom:16px}
 .booking-intro p strong{background:var(--gold-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:600}
@@ -243,7 +243,7 @@ footer a:hover{color:#E4B824}
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"><div class="grid-lines"></div><div class="scan-line"></div></div>
+  <div class="hero-bg"><div class="grid-lines"></div></div>
   <div class="hero-photo">
     <img src="images/hero.jpg" alt="Nik Torento">
     <div class="hero-photo-frame"></div>
@@ -300,6 +300,32 @@ footer a:hover{color:#E4B824}
       </div>
       <div class="form-field"><label>Location &amp; weitere Infos</label><textarea placeholder="Location, Uhrzeit, Gage-Vorstellung, besondere W&uuml;nsche&hellip;"></textarea></div>
       <button class="btn-gold" style="width:100%;margin-top:6px" onclick="sendBooking()">Anfrage absenden</button>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDAR -->
+<section id="calendar">
+  <div class="section-tag fade-in"><span class="stl"></span><span class="stt">Verf&uuml;gbarkeit</span></div>
+  <h2 class="fade-in">KALENDER</h2>
+  <div class="calendar-layout fade-in">
+    <div>
+      <div class="cal-month-nav">
+        <button class="cal-nav-btn" onclick="prevMonth()">&#8249;</button>
+        <h3 id="cal-title"></h3>
+        <button class="cal-nav-btn" onclick="nextMonth()">&#8250;</button>
+      </div>
+      <div class="cal-header"><span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span></div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <div class="cal-legend">
+        <div class="legend-item"><div class="legend-dot booked"></div>Gebucht</div>
+        <div class="legend-item"><div class="legend-dot free"></div>Verf&uuml;gbar</div>
+      </div>
+      <p class="cal-note">Verf&uuml;gbar f&uuml;r Buchungen? Nutze das Formular oben oder schreib direkt an <a href="mailto:niktorento@web.de" style="color:#E4B824;text-decoration:none">niktorento@web.de</a></p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <p style="font-size:13px;color:var(--muted);line-height:1.7">Goldene Punkte = bereits gebuchte Tage. F&uuml;r eine Buchungsanfrage nutze das Formular weiter oben auf der Seite.</p>
+      <a href="#booking" class="btn-gold" style="text-align:center">Zum Buchungsformular</a>
     </div>
   </div>
 </section>
@@ -368,32 +394,6 @@ footer a:hover{color:#E4B824}
       <div class="news-platform">Event</div>
       <p style="opacity:.4;font-style:italic;font-size:13px">&larr; N&auml;chstes Event oder Ank&uuml;ndigung &ndash; schick mir die Info.</p>
       <span class="news-date">Demn&auml;chst</span>
-    </div>
-  </div>
-</section>
-
-<!-- CALENDAR -->
-<section id="calendar">
-  <div class="section-tag fade-in"><span class="stl"></span><span class="stt">Verf&uuml;gbarkeit</span></div>
-  <h2 class="fade-in">KALENDER</h2>
-  <div class="calendar-layout fade-in">
-    <div>
-      <div class="cal-month-nav">
-        <button class="cal-nav-btn" onclick="prevMonth()">&#8249;</button>
-        <h3 id="cal-title"></h3>
-        <button class="cal-nav-btn" onclick="nextMonth()">&#8250;</button>
-      </div>
-      <div class="cal-header"><span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span></div>
-      <div class="cal-grid" id="cal-grid"></div>
-      <div class="cal-legend">
-        <div class="legend-item"><div class="legend-dot booked"></div>Gebucht</div>
-        <div class="legend-item"><div class="legend-dot free"></div>Verf&uuml;gbar</div>
-      </div>
-      <p class="cal-note">Verf&uuml;gbar f&uuml;r Buchungen? Nutze das Formular oben oder schreib direkt an <a href="mailto:niktorento@web.de" style="color:#E4B824;text-decoration:none">niktorento@web.de</a></p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <p style="font-size:13px;color:var(--muted);line-height:1.7">Goldene Punkte = bereits gebuchte Tage. F&uuml;r eine Buchungsanfrage nutze das Formular weiter oben auf der Seite.</p>
-      <a href="#booking" class="btn-gold" style="text-align:center">Zum Buchungsformular</a>
     </div>
   </div>
 </section>
