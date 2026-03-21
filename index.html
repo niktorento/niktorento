@@ -118,7 +118,7 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spa
 .corner.br{bottom:10px;right:10px;border-bottom:1px solid #E4B824;border-right:1px solid #E4B824}
 
 /* MIXES */
-#mixes{background:linear-gradient(rgba(6,6,6,0.78),rgba(6,6,6,0.78)),url('images/mixes-bg.jpg') center 62%/cover no-repeat}
+#mixes{background:linear-gradient(rgba(6,6,6,0.78),rgba(6,6,6,0.78)),url('images/mixes-bg.jpg') center 49%/cover no-repeat}
 .mixes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:44px}
 .mix-card{position:relative;aspect-ratio:16/9;background:var(--black3);overflow:hidden;display:block;text-decoration:none}
 .mix-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 55%);z-index:1;transition:opacity .3s}
@@ -524,6 +524,32 @@ function sendBooking(){
   if(!ok){alert('Bitte alle Felder ausfüllen.');return}
   alert('Anfrage abgeschickt! ✓\n\nWir richten noch Formspree ein, damit die Anfrage direkt per E-Mail ankommt.')
 }
+
+// Mixes: Gesicht exakt zwischen "MIXES" und "LIVESETS" positionieren
+(function() {
+  var section = document.getElementById('mixes');
+  if (!section) return;
+  var h2 = section.querySelector('h2');
+  if (!h2) return;
+  function update() {
+    var fontSize = parseFloat(getComputedStyle(h2).fontSize);
+    var h2TopInSection = h2.offsetTop;
+    // Ziel: unterkante der ersten Textzeile (zwischen MIXES / LIVESETS)
+    var targetY = h2TopInSection + fontSize;
+    // Bild: 1600x2400, Augen bei ~49% von oben
+    var scale = section.offsetWidth / 1600;
+    var renderedH = 2400 * scale;
+    var excess = renderedH - section.offsetHeight;
+    if (excess <= 0) return;
+    var faceRendered = 2400 * 0.49 * scale;
+    var pct = (faceRendered - targetY) / excess * 100;
+    pct = Math.max(0, Math.min(100, pct));
+    section.style.backgroundPosition = 'center ' + pct.toFixed(1) + '%';
+  }
+  if (document.readyState === 'complete') update();
+  else window.addEventListener('load', update);
+  window.addEventListener('resize', update);
+})();
 </script>
 </body>
 </html>
