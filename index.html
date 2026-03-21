@@ -622,7 +622,7 @@ window.addEventListener('popstate',()=>{if(window.location.hash==='#/links')show
 
 // Calendar
 const blockedDates=[];   // Blocker: [[YYYY,M,D], ...] — goldener Punkt, keine Stadt
-const bookingDates=[{y:2026,m:3,d:30,city:"Braunschweig"},{y:2026,m:6,d:23,city:"Bärwalder See"},{y:2026,m:4,d:30,city:"Leipzig"},{y:2026,m:6,d:4,city:"Oberhausen"},{y:2026,m:6,d:8,city:"Neustadt-Glewe"}];   // Bookings: [{y,m,d,city}, ...] — goldener Punkt + Stadt
+const bookingDates=[{y:2026,m:3,d:30,city:"Braunschweig"},{y:2026,m:4,d:30,city:"Leipzig"},{y:2026,m:6,d:4,city:"Oberhausen"},{y:2026,m:6,d:8,city:"Neustadt-Glewe"},{y:2026,m:6,d:9,city:"Neustadt-Glewe"},{y:2026,m:6,d:10,city:"Neustadt-Glewe"},{y:2026,m:6,d:11,city:"Neustadt-Glewe"},{y:2026,m:6,d:12,city:"Neustadt-Glewe"},{y:2026,m:6,d:23,city:"Bärwalder See"},{y:2026,m:6,d:24,city:"Bärwalder See"},{y:2026,m:6,d:25,city:"Bärwalder See"}];   // Bookings: [{y,m,d,city}, ...] — goldener Punkt + Stadt
 const _now=new Date();
 const NOW_Y=_now.getFullYear(),NOW_M=_now.getMonth();
 let cy=NOW_Y,cm=NOW_M;
