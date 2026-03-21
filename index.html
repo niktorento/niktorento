@@ -547,14 +547,6 @@ footer a:hover{color:#E4B824}
       <div class="date-item">
         <span class="date-dot"></span>
         <div class="date-info">
-          <span class="date-when">23.–25. MAI 2026</span>
-          <span class="date-where">Bärwalder See — Break The Rules Festival</span>
-        </div>
-        <a href="https://breaktherules.ticket.io/pgtrefm1/" target="_blank" class="btn-gold" style="font-size:9px;padding:8px 14px;letter-spacing:2px;flex-shrink:0;margin-left:auto">Tickets</a>
-      </div>
-      <div class="date-item">
-        <span class="date-dot"></span>
-        <div class="date-info">
           <span class="date-when">30. MAI 2026</span>
           <span class="date-where">Leipzig — TwntyOne</span>
         </div>
@@ -574,6 +566,14 @@ footer a:hover{color:#E4B824}
           <span class="date-where">Neustadt-Glewe — Airbeat One Festival</span>
         </div>
         <a href="https://airbeat-one.myticket.de/list/events" target="_blank" class="btn-gold" style="font-size:9px;padding:8px 14px;letter-spacing:2px;flex-shrink:0;margin-left:auto">Tickets</a>
+      </div>
+      <div class="date-item">
+        <span class="date-dot"></span>
+        <div class="date-info">
+          <span class="date-when">23.–25. JULI 2026</span>
+          <span class="date-where">Bärwalder See — Break The Rules Festival</span>
+        </div>
+        <a href="https://breaktherules.ticket.io/pgtrefm1/" target="_blank" class="btn-gold" style="font-size:9px;padding:8px 14px;letter-spacing:2px;flex-shrink:0;margin-left:auto">Tickets</a>
       </div>
     </div>
     <a href="#" class="lt-back" onclick="hideDates(event)" style="margin-top:52px">&larr; Zur&uuml;ck zur Website</a>
@@ -621,7 +621,7 @@ window.addEventListener('popstate',()=>{if(window.location.hash==='#/links')show
 
 // Calendar
 const blockedDates=[];   // Blocker: [[YYYY,M,D], ...] — goldener Punkt, keine Stadt
-const bookingDates=[{y:2026,m:3,d:30,city:"Braunschweig"},{y:2026,m:4,d:23,city:"Bärwalder See"},{y:2026,m:4,d:30,city:"Leipzig"},{y:2026,m:6,d:4,city:"Oberhausen"},{y:2026,m:6,d:8,city:"Neustadt-Glewe"}];   // Bookings: [{y,m,d,city}, ...] — goldener Punkt + Stadt
+const bookingDates=[{y:2026,m:3,d:30,city:"Braunschweig"},{y:2026,m:6,d:23,city:"Bärwalder See"},{y:2026,m:4,d:30,city:"Leipzig"},{y:2026,m:6,d:4,city:"Oberhausen"},{y:2026,m:6,d:8,city:"Neustadt-Glewe"}];   // Bookings: [{y,m,d,city}, ...] — goldener Punkt + Stadt
 const _now=new Date();
 const NOW_Y=_now.getFullYear(),NOW_M=_now.getMonth();
 let cy=NOW_Y,cm=NOW_M;
