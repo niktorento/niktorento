@@ -560,7 +560,8 @@ async function sendBooking(btn){
       msg.textContent='✓ Anfrage gesendet! Ich melde mich so schnell wie möglich.';
       inp.forEach(i=>{i.value=''});btn.textContent='Anfrage absenden';btn.disabled=false;
     } else {
-      const errMsg=json.error||json.errors?.[0]?.message||('HTTP '+res.status);
+      const specific=json.errors?.map(e=>(e.field?e.field+': ':'')+e.message).join(' | ');
+      const errMsg=specific||json.error||('HTTP '+res.status);
       throw new Error(errMsg);
     }
   }catch(e){
