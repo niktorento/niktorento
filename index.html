@@ -184,6 +184,7 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spa
 .cal-day.empty{background:transparent}
 .cal-day.blocked{background:rgba(201,150,10,.14);color:#E4B824}
 .cal-day.blocked::after{content:'';position:absolute;bottom:5px;width:4px;height:4px;border-radius:50%;background:#E4B824;animation:pulseGold 2s ease-in-out infinite}
+.cal-city{position:absolute;bottom:13px;left:0;right:0;text-align:center;font-size:5.5px;letter-spacing:.3px;color:#E4B824;overflow:hidden;white-space:nowrap;padding:0 2px;line-height:1;text-transform:uppercase}
 .cal-day.today{border:1px solid #C9960A;color:var(--white)}
 .cal-legend{display:flex;gap:24px;margin-top:18px}
 .legend-item{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--faint)}
@@ -585,12 +586,13 @@ if(window.location.hash==='#/links')showLinktree();
 window.addEventListener('popstate',()=>{if(window.location.hash==='#/links')showLinktree();else hideLinktree()});
 
 // Calendar
-const blockedDates=[];
+const blockedDates=[];   // Blocker: [[YYYY,M,D], ...] — goldener Punkt, keine Stadt
+const bookingDates=[];   // Bookings: [{y,m,d,city}, ...] — goldener Punkt + Stadt
 const _now=new Date();
 const NOW_Y=_now.getFullYear(),NOW_M=_now.getMonth();
 let cy=NOW_Y,cm=NOW_M;
 const mn=['JANUAR','FEBRUAR','MÄRZ','APRIL','MAI','JUNI','JULI','AUGUST','SEPTEMBER','OKTOBER','NOVEMBER','DEZEMBER'];
-function isBlocked(y,m,d){return blockedDates.some(b=>b[0]===y&&b[1]===m&&b[2]===d)}
+function isBlocked(y,m,d){return blockedDates.some(b=>b[0]===y&&b[1]===m&&b[2]===d)||bookingDates.some(b=>b.y===y&&b.m===m&&b.d===d)}
 function renderCalendar(){
   document.getElementById('cal-title').textContent=mn[cm]+' '+cy;
   const g=document.getElementById('cal-grid');g.innerHTML='';
@@ -600,7 +602,10 @@ function renderCalendar(){
   for(let d=1;d<=dim;d++){const e=document.createElement('div');
     const it=td.getFullYear()===cy&&td.getMonth()===cm&&td.getDate()===d;
     e.className='cal-day'+(isBlocked(cy,cm,d)?' blocked':'')+( it?' today':'');
-    e.textContent=d;g.appendChild(e)}
+    e.textContent=d;
+    const bk=bookingDates.find(b=>b.y===cy&&b.m===cm&&b.d===d);
+    if(bk){const cs=document.createElement('span');cs.className='cal-city';cs.textContent=bk.city;e.appendChild(cs);}
+    g.appendChild(e)}
   // Buttons an Grenzen dimmen
   const atMin=(cy===NOW_Y&&cm===NOW_M);
   const atMax=(cy===NOW_Y+1&&cm===NOW_M)||(cy>NOW_Y+1);
