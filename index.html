@@ -581,7 +581,7 @@ flatpickr('#booking-datum',{
 <!-- ========== FOOTER ========== -->
 <footer id="site-footer">
   <div class="footer-inner">
-    <span class="footer-name gold-text">NIK TORENTO</span>
+    <img id="footer-logo" src="" alt="Nik Torento" style="height:28px;width:auto;display:block;filter:drop-shadow(0 0 6px rgba(228,184,36,.15))">
     <div class="footer-links">
       <button onclick="openLegal('impressum')">Impressum</button>
       <button onclick="openLegal('datenschutz')">Datenschutz</button>
@@ -686,6 +686,11 @@ function closeLegal(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLegal()});
+document.addEventListener('DOMContentLoaded',function(){
+  var ni=document.querySelector('.nav-logo img');
+  var fi=document.getElementById('footer-logo');
+  if(ni&&fi)fi.src=ni.src;
+});
 </script>
 </body>
 </html>
