@@ -36,20 +36,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 #nav-overlay{display:none;position:fixed;inset:0;z-index:200;background:#060606}
-#nav-overlay.open{display:flex;animation:navFadeIn .3s ease}
+#nav-overlay.open{display:flex;flex-direction:column;align-items:center;padding:40px 24px 36px;animation:navFadeIn .3s ease}
 @keyframes navFadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
-.nav-overlay-inner{position:relative;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;width:100%;height:100%;padding:80px 10vw 60px}
-.nav-close{position:absolute;top:28px;right:36px;background:none;border:1px solid rgba(244,239,229,.15);border-radius:2px;color:rgba(244,239,229,.55);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;padding:8px 14px;cursor:pointer;transition:all .2s;font-family:Barlow,sans-serif;display:flex;align-items:center;gap:7px}
-.nav-close:hover{color:var(--g4);border-color:var(--g4)}
-.nav-close svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2}
-.nav-overlay-links{display:flex;flex-direction:column;align-items:flex-start;gap:0}
-.nav-overlay-links a{font-family:Barlow,sans-serif;font-weight:300;font-size:clamp(1.6rem,4.5vw,2.6rem);letter-spacing:.06em;color:rgba(244,239,229,.38);text-decoration:none;line-height:1;padding:14px 0;border-bottom:1px solid rgba(244,239,229,.06);width:80vw;max-width:600px;display:flex;align-items:center;gap:20px;transition:color .25s,border-color .25s;-webkit-text-fill-color:rgba(244,239,229,.38)}
-.nav-overlay-links a .nav-num{font-size:.6rem;letter-spacing:.2em;color:rgba(228,184,36,.5)!important;-webkit-text-fill-color:rgba(228,184,36,.5)!important;font-weight:600;min-width:28px;font-family:Barlow,sans-serif}
-.nav-overlay-links a:hover{color:var(--white);border-color:rgba(228,184,36,.3);-webkit-text-fill-color:var(--white)}
-.nav-overlay-links a:hover .nav-num{color:var(--g4);-webkit-text-fill-color:var(--g4)}
-.nav-overlay-footer{position:absolute;bottom:40px;left:10vw;display:flex;align-items:center;gap:16px}
-.nav-overlay-footer img{height:22px;width:auto;opacity:.55;filter:drop-shadow(0 0 4px rgba(228,184,36,.1))}
-.nav-overlay-footer span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,229,.2)}
+.nav-close{position:absolute;top:24px;right:24px;background:none;border:none;color:rgba(244,239,229,.35);font-size:1.8rem;line-height:1;cursor:pointer;transition:color .2s;padding:4px 8px}
+.nav-close:hover{color:var(--g4)}
+.nav-overlay-logo{display:block;opacity:.85;transition:opacity .2s;flex-shrink:0}
+.nav-overlay-logo:hover{opacity:1}
+.nav-overlay-logo img{height:36px;width:auto;display:block}
+.nav-overlay-links{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center}
+.nav-overlay-links a{font-family:"Bebas Neue",sans-serif;font-size:clamp(2.6rem,7vw,4rem);letter-spacing:.12em;color:rgba(244,239,229,.45);-webkit-text-fill-color:rgba(244,239,229,.45);text-decoration:none;line-height:1.2;padding:5px 0;transition:all .2s;display:block}
+.nav-overlay-links a:hover{background:var(--gold-text);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmerSlow 6s linear infinite}
+.nav-back-home{flex-shrink:0;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,239,229,.22);text-decoration:none;transition:color .2s;display:flex;align-items:center;gap:8px}
+.nav-back-home:hover{color:var(--g4)}
 
 
 
@@ -230,8 +228,14 @@ footer a:hover{color:#E4B824}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 
 /* LINKTREE */
-#linktree-page{display:none;min-height:100vh;background:var(--black);align-items:center;justify-content:center;flex-direction:column;padding:60px 24px;position:relative}
-#linktree-page.active{display:flex}
+#linktree-page,#dates-page,#press-page{display:none;min-height:100vh;background:var(--black);align-items:center;justify-content:center;flex-direction:column;padding:60px 24px;position:relative}
+#linktree-page.active,#dates-page.active,#press-page.active{display:flex}
+.dates-list{width:100%;max-width:480px;display:flex;flex-direction:column;gap:16px}
+.date-item{display:flex;align-items:center;gap:16px;padding:16px;border:1px solid rgba(228,184,36,.15);border-radius:2px}
+.date-dot{width:8px;height:8px;border-radius:50%;background:rgba(228,184,36,.4);flex-shrink:0}
+.date-info{display:flex;flex-direction:column;gap:4px}
+.date-when{font-family:"Bebas Neue",sans-serif;letter-spacing:.1em;font-size:1rem;color:var(--g4)}
+.date-where{font-size:.8rem;letter-spacing:.1em;color:var(--muted)}
 #main-page.hidden{display:none}
 .lt-bg{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(180,120,5,.09) 0%,transparent 60%)}
 .lt-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(to right,rgba(201,150,10,.02) 1px,transparent 1px),linear-gradient(to bottom,rgba(201,150,10,.02) 1px,transparent 1px);background-size:60px 60px}
@@ -276,24 +280,18 @@ footer a:hover{color:#E4B824}
 </nav>
 
 <!-- FULLSCREEN NAV OVERLAY -->
-<div id="nav-overlay" onclick="if(event.target===this)toggleMenu()">
-  <div class="nav-overlay-inner">
-    <button class="nav-close" onclick="toggleMenu()" aria-label="Menü schließen">&times;</button>
-    <nav class="nav-overlay-links">
-      <a href="#about" onclick="toggleMenu()"><span class="nav-num">01</span>About</a>
-      <a href="#mixes" onclick="toggleMenu()"><span class="nav-num">02</span>Sets &amp; Livesets</a>
-      <a href="#news" onclick="toggleMenu()"><span class="nav-num">03</span>News</a>
-      <a href="#calendar" onclick="toggleMenu()"><span class="nav-num">04</span>Kalender</a>
-      <a href="#booking" onclick="toggleMenu()"><span class="nav-num">05</span>Booking</a>
-      <a href="#/links" onclick="showLinktree(event);toggleMenu()"><span class="nav-num">06</span>Links</a>
-    </nav>
-    <div class="nav-overlay-footer">
-      <img id="nav-menu-logo" src="" alt="Nik Torento">
-      <span>Hard Techno &middot; Braunschweig</span>
-    </div>
+<div id="nav-overlay">
+  <button class="nav-close" onclick="toggleMenu()" aria-label="Schliessen">&times;</button>
+  <a href="#hero" class="nav-overlay-logo" onclick="toggleMenu()" id="nav-logo-wrap"><img id="nav-menu-logo" src="" alt="Nik Torento"></a>
+  <div class="nav-overlay-links">
+    <a href="#/dates" onclick="showDates(event);toggleMenu()">Next Dates</a>
+    <a href="#mixes" onclick="toggleMenu()">Livesets</a>
+    <a href="#booking" onclick="toggleMenu()">Booking</a>
+    <a href="#/press" onclick="showPress(event);toggleMenu()">Pressekit</a>
+    <a href="#/links" onclick="showLinktree(event);toggleMenu()">Links</a>
   </div>
+  <a href="#hero" class="nav-back-home" onclick="toggleMenu()">&larr; Zur&uuml;ck zur Startseite</a>
 </div>
-
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"><div class="grid-lines"></div></div>
@@ -524,6 +522,48 @@ footer a:hover{color:#E4B824}
   </div>
 </div>
 
+<!-- NEXT DATES PAGE -->
+<div id="dates-page">
+  <div class="lt-inner">
+    <a href="#" class="lt-back" onclick="hideDates(event)">&larr; Zur&uuml;ck zur Website</a>
+    <div class="lt-logo"><img id="dates-logo" src="" alt="Nik Torento"></div>
+    <h1 class="lt-name">Next Dates</h1>
+    <p class="lt-bio" style="margin-bottom:32px">Hier findest du meine n&auml;chsten Auftritte.</p>
+    <div class="dates-list">
+      <div class="date-item">
+        <span class="date-dot"></span>
+        <div class="date-info">
+          <span class="date-when">Demnächst</span>
+          <span class="date-where">&larr; Neue Dates kommen bald</span>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="lt-back" onclick="hideDates(event)" style="margin-top:52px">&larr; Zur&uuml;ck zur Website</a>
+  </div>
+</div>
+
+<!-- PRESSEKIT PAGE -->
+<div id="press-page">
+  <div class="lt-inner">
+    <a href="#" class="lt-back" onclick="hidePress(event)">&larr; Zur&uuml;ck zur Website</a>
+    <div class="lt-logo"><img id="press-logo" src="" alt="Nik Torento"></div>
+    <h1 class="lt-name">Pressekit</h1>
+    <p class="lt-bio">Hard Techno DJ &amp; Producer aus Braunschweig. Gespielt auf Break The Rules Festival, Ruhr in Love &amp; Springbreak Island. Sets von 1&ndash;5,5 Stunden.</p>
+    <div class="lt-links" style="margin-top:32px">
+      <a href="mailto:niktorento@web.de" class="lt-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="10" rx="1"/><path d="M1 3l7 6 7-6"/></svg>
+        <span>Booking &amp; Presseanfragen</span><span class="lt-link-arrow">&rarr;</span></a>
+      <div class="lt-link" style="opacity:.4;cursor:default">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
+        <span>Pressefotos &ndash; demnächst</span><span class="lt-link-arrow">&darr;</span></div>
+      <div class="lt-link" style="opacity:.4;cursor:default">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
+        <span>Biografie (PDF) &ndash; demnächst</span><span class="lt-link-arrow">&darr;</span></div>
+    </div>
+    <a href="#" class="lt-back" onclick="hidePress(event)" style="margin-top:52px">&larr; Zur&uuml;ck zur Website</a>
+  </div>
+</div>
+
 <script>
 // Scroll fade-in
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.12});
@@ -531,8 +571,13 @@ document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 
 // Linktree routing
 function toggleMenu(){var b=document.getElementById("burger"),o=document.getElementById("nav-overlay");b.classList.toggle("open");o.classList.toggle("open");document.body.style.overflow=o.classList.contains("open")?"hidden":"";var ni=document.querySelector(".nav-logo img"),ml=document.getElementById("nav-menu-logo");if(ni&&ml&&!ml.src.startsWith("data"))ml.src=ni.src;}
-function showLinktree(e){if(e)e.preventDefault();document.getElementById('main-page').classList.add('hidden');document.getElementById('linktree-page').classList.add('active');window.scrollTo(0,0);history.pushState(null,'','#/links')}
-function hideLinktree(e){if(e)e.preventDefault();document.getElementById('linktree-page').classList.remove('active');document.getElementById('main-page').classList.remove('hidden');history.pushState(null,'',window.location.pathname);window.scrollTo(0,0)}
+function hideAllPages(){['linktree-page','dates-page','press-page'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('active');});document.getElementById('main-page').classList.remove('hidden');}
+function showLinktree(e){if(e)e.preventDefault();hideAllPages();document.getElementById('main-page').classList.add('hidden');document.getElementById('linktree-page').classList.add('active');window.scrollTo(0,0);history.pushState(null,'','#/links')}
+function hideLinktree(e){if(e)e.preventDefault();hideAllPages();history.pushState(null,"",window.location.pathname);window.scrollTo(0,0)}
+function showDates(e){if(e)e.preventDefault();hideAllPages();document.getElementById("main-page").classList.add("hidden");document.getElementById("dates-page").classList.add("active");window.scrollTo(0,0);history.pushState(null,"","#/dates");var ni=document.querySelector(".nav-logo img"),dl=document.getElementById("dates-logo");if(ni&&dl&&!dl.src.startsWith("data"))dl.src=ni.src;}
+function hideDates(e){if(e)e.preventDefault();hideAllPages();history.pushState(null,"",window.location.pathname);window.scrollTo(0,0)}
+function showPress(e){if(e)e.preventDefault();hideAllPages();document.getElementById("main-page").classList.add("hidden");document.getElementById("press-page").classList.add("active");window.scrollTo(0,0);history.pushState(null,"","#/press");var ni=document.querySelector(".nav-logo img"),pl=document.getElementById("press-logo");if(ni&&pl&&!pl.src.startsWith("data"))pl.src=ni.src;}
+function hidePress(e){if(e)e.preventDefault();hideAllPages();history.pushState(null,"",window.location.pathname);window.scrollTo(0,0)}
 if(window.location.hash==='#/links')showLinktree();
 window.addEventListener('popstate',()=>{if(window.location.hash==='#/links')showLinktree();else hideLinktree()});
 
