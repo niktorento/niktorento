@@ -240,7 +240,8 @@ footer a:hover{color:#E4B824}
 .lt-bg{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(180,120,5,.09) 0%,transparent 60%)}
 .lt-grid{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(to right,rgba(201,150,10,.02) 1px,transparent 1px),linear-gradient(to bottom,rgba(201,150,10,.02) 1px,transparent 1px);background-size:60px 60px}
 .lt-inner{position:relative;z-index:1;width:100%;max-width:480px}
-.lt-logo{width:280px;height:auto;margin:0 auto 20px;display:block}
+.lt-logo{width:140px;height:auto;margin:0 auto 16px;display:block}
+.lt-logo img{width:100%;height:auto;display:block}
 .lt-name{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:6px;text-align:center;background:var(--gold-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;text-transform:uppercase}
 .lt-bio{text-align:center;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--faint);margin-bottom:40px}
 .lt-section-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;background:var(--gold-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center;margin:28px 0 12px;display:flex;align-items:center;gap:10px;justify-content:center}
@@ -256,6 +257,8 @@ footer a:hover{color:#E4B824}
 .lt-link:hover .lt-link-arrow{opacity:1;transform:translateX(3px)}
 .lt-back{margin-top:44px;text-align:center;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--faint);text-decoration:none;transition:color .2s;display:block}
 .lt-back:hover{color:#E4B824}
+.lt-back-top{position:absolute;top:40px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--faint);text-decoration:none;transition:color .2s;display:block;z-index:2}
+.lt-back-top:hover{color:#E4B824}
 
 @media(max-width:900px){
   nav{padding:16px 20px}
@@ -524,8 +527,8 @@ footer a:hover{color:#E4B824}
 
 <!-- NEXT DATES PAGE -->
 <div id="dates-page">
+  <a href="#" class="lt-back-top" onclick="hideDates(event)">&larr; Zur&uuml;ck zur Website</a>
   <div class="lt-inner">
-    <a href="#" class="lt-back" onclick="hideDates(event)">&larr; Zur&uuml;ck zur Website</a>
     <div class="lt-logo"><img id="dates-logo" src="" alt="Nik Torento"></div>
     <h1 class="lt-name">Next Dates</h1>
     <p class="lt-bio" style="margin-bottom:32px">Hier findest du meine n&auml;chsten Auftritte.</p>
@@ -544,8 +547,8 @@ footer a:hover{color:#E4B824}
 
 <!-- PRESSEKIT PAGE -->
 <div id="press-page">
+  <a href="#" class="lt-back-top" onclick="hidePress(event)">&larr; Zur&uuml;ck zur Website</a>
   <div class="lt-inner">
-    <a href="#" class="lt-back" onclick="hidePress(event)">&larr; Zur&uuml;ck zur Website</a>
     <div class="lt-logo"><img id="press-logo" src="" alt="Nik Torento"></div>
     <h1 class="lt-name">Pressekit</h1>
     <p class="lt-bio">Hard Techno DJ &amp; Producer aus Braunschweig. Gespielt auf Break The Rules Festival, Ruhr in Love &amp; Springbreak Island. Sets von 1&ndash;5,5 Stunden.</p>
