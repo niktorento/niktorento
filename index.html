@@ -358,13 +358,13 @@ footer a:hover{color:#E4B824}
       <h3>ANFRAGE SENDEN</h3>
       <p>Kostenlos &amp; unverbindlich &mdash; Antwort innerhalb 24h</p>
       <div class="form-row">
-        <div class="form-field"><label>Name</label><input type="text" name="name" placeholder="Dein Name"></div>
-        <div class="form-field"><label>E-Mail</label><input type="email" name="_replyto" placeholder="deine@email.de"></div>
+        <div class="form-field"><label>Name *</label><input type="text" name="name" placeholder="Dein Name" required></div>
+        <div class="form-field"><label>E-Mail *</label><input type="email" name="_replyto" placeholder="deine@email.de" required></div>
       </div>
       <div class="form-row">
-        <div class="form-field"><label>Datum</label><input type="text" name="datum" id="booking-datum" placeholder="Datum wählen…" readonly style="cursor:pointer"></div>
-        <div class="form-field"><label>Art des Events</label>
-          <select name="event_art"><option value="">Bitte w&auml;hlen&hellip;</option><option>Club / Rave</option><option>Festival</option><option>Open Air</option><option>Private Party</option><option>Sonstiges</option></select>
+        <div class="form-field"><label>Datum *</label><input type="text" name="datum" id="booking-datum" placeholder="Datum wählen…" readonly style="cursor:pointer"></div>
+        <div class="form-field"><label>Art des Events *</label>
+          <select name="event_art" required><option value="">Bitte w&auml;hlen&hellip;</option><option>Club / Rave</option><option>Festival</option><option>Open Air</option><option>Private Party</option><option>Sonstiges</option></select>
         </div>
       </div>
       <div class="form-field"><label>Location &amp; weitere Infos</label><textarea name="nachricht" placeholder="Location, Uhrzeit, Gage-Vorstellung, besondere W&uuml;nsche&hellip;"></textarea></div>
@@ -686,11 +686,12 @@ renderCalendar();
 // Booking form
 async function sendBooking(btn){
   const inp=document.querySelectorAll('.booking-form input,.booking-form textarea,.booking-form select');
-  let ok=true;inp.forEach(i=>{if(!i.value.trim())ok=false});
+  const required=['name','_replyto','datum','event_art'];
+  let ok=true;inp.forEach(i=>{if(required.includes(i.name)&&!i.value.trim())ok=false});
   const msg=document.getElementById('booking-msg');
   if(!ok){
     msg.style.display='block';msg.style.color='#E4B824';
-    msg.textContent='Bitte alle Felder ausfüllen.';return;
+    msg.textContent='Bitte Name, E-Mail, Datum und Art des Events ausfüllen.';return;
   }
   btn.disabled=true;btn.textContent='Wird gesendet…';
   const data=new FormData();
