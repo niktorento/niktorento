@@ -617,8 +617,12 @@ function showDates(e){if(e)e.preventDefault();hideAllPages();document.getElement
 function hideDates(e){if(e)e.preventDefault();hideAllPages();history.pushState(null,"",window.location.pathname);window.scrollTo(0,0)}
 function showPress(e){if(e)e.preventDefault();hideAllPages();document.getElementById("main-page").classList.add("hidden");document.getElementById("press-page").classList.add("active");window.scrollTo(0,0);history.pushState(null,"","#/press");var ni=document.querySelector(".nav-logo img"),pl=document.getElementById("press-logo");if(ni&&pl&&!pl.src.startsWith("data"))pl.src=ni.src;}
 function hidePress(e){if(e)e.preventDefault();hideAllPages();history.pushState(null,"",window.location.pathname);window.scrollTo(0,0)}
-if(window.location.hash==='#/links')showLinktree();
-window.addEventListener('popstate',()=>{if(window.location.hash==='#/links')showLinktree();else hideLinktree()});
+window.addEventListener('popstate',function(){
+  var h=window.location.hash;
+  if(h==='#/links')showLinktree();
+  else if(h==='#/dates')showDates(null);
+  else hideAllPages();
+});
 
 // Calendar
 const blockedDates=[[2026,2,28],[2026,3,7],[2026,3,12],[2026,4,9],[2026,4,10],[2026,5,7],[2026,5,20],[2026,6,3],[2026,6,18],[2026,7,15],[2026,8,2],[2026,8,3],[2026,8,4],[2026,8,5],[2026,8,6],[2026,8,7],[2026,8,8],[2026,8,9],[2026,8,24],[2026,9,30]];   // Blocker: [[YYYY,M,D], ...] — goldener Punkt, keine Stadt
@@ -818,6 +822,9 @@ document.addEventListener('DOMContentLoaded',function(){
   var ni=document.querySelector('.nav-logo img');
   var fi=document.getElementById('footer-logo');
   if(ni&&fi)fi.src=ni.src;
+  var h=window.location.hash;
+  if(h==='#/links')showLinktree();
+  else if(h==='#/dates')showDates(null);
 });
 </script>
 </body>
