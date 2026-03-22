@@ -151,16 +151,19 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spa
 
 /* MIXES */
 #mixes{background:var(--black)}
-.mixes-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px;max-width:1100px}
-.mix-col{display:flex;flex-direction:column}
+.mixes-grid{display:flex;gap:0;margin-top:44px;align-items:stretch}
+.mix-col{flex:1;display:flex;flex-direction:column;min-width:0}
+.mix-col:first-child{padding-right:40px}
+.mix-col:last-child{padding-left:40px}
 .mix-col h2{margin-top:0;margin-bottom:20px;min-height:152px;display:flex;align-items:flex-end}
+.mixes-divider{width:1px;flex-shrink:0;background:linear-gradient(to bottom,transparent 0%,rgba(228,184,36,.5) 15%,rgba(228,184,36,.7) 50%,rgba(228,184,36,.5) 85%,transparent 100%);margin:0}
 .mix-card{position:relative;aspect-ratio:16/9;background:var(--black3);overflow:hidden;display:block;text-decoration:none;border:1px solid rgba(228,184,36,.35);box-shadow:0 0 0 1px rgba(228,184,36,.08),0 0 24px rgba(228,184,36,.12),inset 0 0 24px rgba(0,0,0,.4)}
 .mix-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 55%);z-index:1;transition:opacity .3s}
 .mix-card:hover::before{opacity:.5}
 .mix-card-bg{width:100%;height:100%;background:linear-gradient(135deg,#1c1a14,#0a0a08);display:flex;align-items:center;justify-content:center;transition:transform .55s ease}
 .mix-card:hover{border-color:rgba(228,184,36,.7);box-shadow:0 0 0 1px rgba(228,184,36,.2),0 0 36px rgba(228,184,36,.22),inset 0 0 24px rgba(0,0,0,.4)}.mix-card:hover .mix-card-bg{transform:scale(1.06)}
 .mix-card:hover .mix-card-bg img{transform:scale(1.06)}
-.merch-card:hover .mix-card-bg{transform:none!important}.merch-card .mix-card-bg{transition:none}
+.merch-card:hover .mix-card-bg,.merch-card:hover .mix-card-bg img{transform:none!important}.merch-card .mix-card-bg{transition:none}
 .mix-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:48px;height:48px;border:1px solid #E4B824;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
 .mix-play svg{width:13px} .mix-play svg polygon{fill:#E4B824}
 .mix-card:hover .mix-play{opacity:1}
@@ -284,7 +287,11 @@ footer a:hover{color:#E4B824}
   nav{padding:16px 20px}
   section{padding:60px 20px}
   #booking .booking-wrap,#about{grid-template-columns:1fr}
-  .mixes-grid,.news-grid{grid-template-columns:1fr}
+  .mixes-grid{flex-direction:column;gap:40px}
+  .mixes-divider{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(228,184,36,.6),transparent);margin:0}
+  .mix-col:first-child{padding-right:0}
+  .mix-col:last-child{padding-left:0}
+  .news-grid{grid-template-columns:1fr}
   .mix-col h2{min-height:0;display:block}
   .calendar-layout{grid-template-columns:1fr}
   .hero-bottom{display:none}
@@ -379,6 +386,7 @@ footer a:hover{color:#E4B824}
         <div class="mix-info"><h3>JETZT ANHÖREN</h3><span>SoundCloud &middot; Hard Techno &middot; 2026</span></div>
       </a>
     </div>
+    <div class="mixes-divider"></div>
     <div class="mix-col">
       <h2>MERCH</h2>
       <a href="https://niktorento.myspreadshop.de/" target="_blank" rel="noopener" class="mix-card merch-card">
