@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -340,81 +340,14 @@ footer a:hover{color:#E4B824}
   </div>
 </section>
 
-<!-- BOOKING -->
-<section id="booking">
-  <div class="section-tag"><span class="stl"></span><span class="stt">Booking</span></div>
-  <h2>JETZT<br>BUCHEN</h2>
-  <div class="booking-wrap">
-    <div class="booking-intro fade-in">
-      <p><strong>Du suchst einen DJ</strong> der deine Veranstaltung auf ein neues Level hebt? Hard Techno mit Energie, der die Crowd abholt &ndash; von der Hardtechno-Szene bis zum breiten Mainstream.</p>
-      <p>Schreib mir direkt &ndash; ich antworte in der Regel innerhalb von 24 Stunden und wir finden gemeinsam die beste L&ouml;sung f&uuml;r dein Event.</p>
-      <div class="booking-perks">
-        <div class="perk"><span class="perk-dot"></span>Clubs, Raves, Festivals &amp; private Events</div>
-        <div class="perk"><span class="perk-dot"></span>Sets von 1 bis 5+ Stunden</div>
-        <div class="perk"><span class="perk-dot"></span>Hard Techno &amp; Chart Mashups</div>
-        <div class="perk"><span class="perk-dot"></span>Erfahrung: Break The Rules Festival, Ruhr in Love, Springbreak Island u.v.m.</div>
-        <div class="perk"><span class="perk-dot"></span>Braunschweig &amp; deutschlandweit</div>
-      </div>
-    </div>
-    <div class="booking-form fade-in">
-      <h3>ANFRAGE SENDEN</h3>
-      <p>Kostenlos &amp; unverbindlich &mdash; Antwort innerhalb 24h</p>
-      <div class="form-row">
-        <div class="form-field"><label>Name *</label><input type="text" name="name" placeholder="Dein Name" required></div>
-        <div class="form-field"><label>E-Mail *</label><input type="email" name="_replyto" placeholder="deine@email.de" required></div>
-      </div>
-      <div class="form-row">
-        <div class="form-field"><label>Datum *</label><input type="text" name="datum" id="booking-datum" placeholder="Datum wählen…" readonly style="cursor:pointer"></div>
-        <div class="form-field"><label>Art des Events *</label>
-          <select name="event_art" required><option value="">Bitte w&auml;hlen&hellip;</option><option>Club / Rave</option><option>Festival</option><option>Open Air</option><option>Private Party</option><option>Sonstiges</option></select>
-        </div>
-      </div>
-      <div class="form-field"><label>Location &amp; weitere Infos</label><textarea name="nachricht" placeholder="Location, Uhrzeit, Gage-Vorstellung, besondere W&uuml;nsche&hellip;"></textarea></div>
-      <div id="booking-msg" style="display:none;margin-top:10px;font-size:13px;letter-spacing:1px;text-align:center;padding:12px"></div>
-      <button class="btn-gold" style="width:100%;margin-top:6px" onclick="sendBooking(this)">Anfrage absenden</button>
-    </div>
-  </div>
-</section>
-
-<!-- CALENDAR -->
-<section id="calendar">
-  <div class="section-tag fade-in"><span class="stl"></span><span class="stt">Verf&uuml;gbarkeit</span></div>
-  <h2 class="fade-in">KALENDER</h2>
-  <div class="calendar-layout fade-in">
-    <div>
-      <div class="cal-month-nav">
-        <button class="cal-nav-btn" id="cal-prev" onclick="prevMonth()">&#8249;</button>
-        <h3 id="cal-title"></h3>
-        <button class="cal-nav-btn" id="cal-next" onclick="nextMonth()">&#8250;</button>
-      </div>
-      <div class="cal-header"><span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span></div>
-      <div class="cal-grid" id="cal-grid"></div>
-      <div class="cal-legend">
-        <div class="legend-item"><div class="legend-dot booked"></div>Gebucht</div>
-        <div class="legend-item"><div class="legend-dot free"></div>Verf&uuml;gbar</div>
-      </div>
-    </div>
-    <div style="display:flex;flex-direction:column;justify-content:space-between">
-      <div>
-        <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;background:var(--gold-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px">N&auml;chste Auftritte</div>
-        <div id="cal-next-dates"></div>
-      </div>
-      <div style="border-top:1px solid rgba(201,150,10,.15);padding-top:20px;display:flex;flex-direction:column;gap:14px">
-        <p style="font-size:12px;color:var(--muted);line-height:1.7"><span style="color:#E4B824;font-size:14px;vertical-align:middle;margin-right:6px">&#9679;</span>Bereits gebuchte Tage. Trotzdem Anfrage stellen &ndash; Verf&uuml;gbarkeit ist begrenzt. Schreib an <a href="mailto:niktorento@web.de" style="color:#E4B824;text-decoration:none">niktorento@web.de</a> oder nutze das Formular.</p>
-        <a href="#booking" class="btn-gold" style="text-align:center">Zum Buchungsformular</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ABOUT -->
 <section id="about">
   <div class="about-text fade-in">
     <div class="section-tag"><span class="stl"></span><span class="stt">&Uuml;ber mich</span></div>
     <h2>HARD TECHNO<br>MADE IN<br>GERMANY</h2>
     <div class="gold-line"></div>
-    <p><strong>Nik Torento</strong> aus Braunschweig steht f&uuml;r Hard Techno, der keine Kompromisse macht &ndash; aber gleichzeitig das breite Publikum mitnimmt. Die Kombination aus treibenden Hardtechno-Tracks und cleveren Chart-Mashups ist sein Markenzeichen.</p>
-    <p>Gespielt auf Events wie <strong>Break The Rules Festival, Ruhr in Love &amp; Springbreak Island</strong>, mit Sets die manchmal 5,5 Stunden gehen &ndash; weil die besten Raves kein Ende finden. Produzent auf Beatport, Spotify und Apple Music.</p>
+    <p><strong>Nik Torento</strong> steht f&uuml;r einen Sound, der keine Kompromisse kennt &ndash; und trotzdem alle mitrei&szlig;t. Seine Mischung aus druckvollen Hardtechno Drops und &uuml;berraschenden Chart-Momenten hat ihm einen Signature Sound geschaffen, der sofort z&uuml;ndet.</p>
+    <p>Von <strong>Break the Rules</strong> &uuml;ber <strong>Ruhr in Love</strong> bis <strong>Airbeat One</strong> &ndash; der Braunschweiger bringt Festivalb&uuml;hnen zum Beben. Maximale Energie, kompromissloser Bass, 100&nbsp;% Pr&auml;senz. Produzent auf Beatport, Spotify und Apple Music.</p>
     <div class="about-tags">
       <span class="tag">Hard Techno</span><span class="tag">Bigroom</span><span class="tag">Chart Mashups</span>
       <span class="tag">FL Studio</span><span class="tag">Producer</span><span class="tag">Braunschweig</span>
@@ -462,6 +395,73 @@ footer a:hover{color:#E4B824}
       <p>Neuer Track <strong>&ldquo;Monster&rdquo;</strong> mit Paul Keen &amp; MEYSTA jetzt auf Beatport, Spotify und Apple Music.</p>
       <span class="news-date">2024</span><br>
       <a href="https://open.spotify.com/intl-de/artist/1WBLjFSO8AfWx1GIgWIn41" target="_blank" class="news-link">Auf Spotify anh&ouml;ren &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDAR -->
+<section id="calendar">
+  <div class="section-tag fade-in"><span class="stl"></span><span class="stt">Verf&uuml;gbarkeit</span></div>
+  <h2 class="fade-in">KALENDER</h2>
+  <div class="calendar-layout fade-in">
+    <div>
+      <div class="cal-month-nav">
+        <button class="cal-nav-btn" id="cal-prev" onclick="prevMonth()">&#8249;</button>
+        <h3 id="cal-title"></h3>
+        <button class="cal-nav-btn" id="cal-next" onclick="nextMonth()">&#8250;</button>
+      </div>
+      <div class="cal-header"><span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span></div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <div class="cal-legend">
+        <div class="legend-item"><div class="legend-dot booked"></div>Gebucht</div>
+        <div class="legend-item"><div class="legend-dot free"></div>Verf&uuml;gbar</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;background:var(--gold-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px">N&auml;chste Auftritte</div>
+        <div id="cal-next-dates"></div>
+      </div>
+      <div style="border-top:1px solid rgba(201,150,10,.15);padding-top:20px;display:flex;flex-direction:column;gap:14px">
+        <p style="font-size:12px;color:var(--muted);line-height:1.7"><span style="color:#E4B824;font-size:14px;vertical-align:middle;margin-right:6px">&#9679;</span>Bereits gebuchte Tage. Trotzdem Anfrage stellen &ndash; Verf&uuml;gbarkeit ist begrenzt. Schreib an <a href="mailto:niktorento@web.de" style="color:#E4B824;text-decoration:none">niktorento@web.de</a> oder nutze das Formular.</p>
+        <a href="#booking" class="btn-gold" style="text-align:center">Zum Buchungsformular</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="section-tag"><span class="stl"></span><span class="stt">Booking</span></div>
+  <h2>JETZT<br>BUCHEN</h2>
+  <div class="booking-wrap">
+    <div class="booking-intro fade-in">
+      <p><strong>Du suchst einen DJ</strong> der deine Veranstaltung auf ein neues Level hebt? Hard Techno mit Energie, der die Crowd abholt &ndash; von der Hardtechno-Szene bis zum breiten Mainstream.</p>
+      <p>Schreib mir direkt &ndash; ich antworte in der Regel innerhalb von 24 Stunden und wir finden gemeinsam die beste L&ouml;sung f&uuml;r dein Event.</p>
+      <div class="booking-perks">
+        <div class="perk"><span class="perk-dot"></span>Clubs, Raves, Festivals &amp; private Events</div>
+        <div class="perk"><span class="perk-dot"></span>Sets von 1 bis 5+ Stunden</div>
+        <div class="perk"><span class="perk-dot"></span>Hard Techno &amp; Chart Mashups</div>
+        <div class="perk"><span class="perk-dot"></span>Erfahrung: Break The Rules Festival, Ruhr in Love, Springbreak Island u.v.m.</div>
+        <div class="perk"><span class="perk-dot"></span>Braunschweig &amp; deutschlandweit</div>
+      </div>
+    </div>
+    <div class="booking-form fade-in">
+      <h3>ANFRAGE SENDEN</h3>
+      <p>Kostenlos &amp; unverbindlich &mdash; Antwort innerhalb 24h</p>
+      <div class="form-row">
+        <div class="form-field"><label>Name *</label><input type="text" name="name" placeholder="Dein Name" required></div>
+        <div class="form-field"><label>E-Mail *</label><input type="email" name="_replyto" placeholder="deine@email.de" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>Datum *</label><input type="text" name="datum" id="booking-datum" placeholder="Datum wählen…" readonly style="cursor:pointer"></div>
+        <div class="form-field"><label>Art des Events *</label>
+          <select name="event_art" required><option value="">Bitte w&auml;hlen&hellip;</option><option>Club / Rave</option><option>Festival</option><option>Open Air</option><option>Private Party</option><option>Sonstiges</option></select>
+        </div>
+      </div>
+      <div class="form-field"><label>Location &amp; weitere Infos</label><textarea name="nachricht" placeholder="Location, Uhrzeit, Gage-Vorstellung, besondere W&uuml;nsche&hellip;"></textarea></div>
+      <div id="booking-msg" style="display:none;margin-top:10px;font-size:13px;letter-spacing:1px;text-align:center;padding:12px"></div>
+      <button class="btn-gold" style="width:100%;margin-top:6px" onclick="sendBooking(this)">Anfrage absenden</button>
     </div>
   </div>
 </section>
