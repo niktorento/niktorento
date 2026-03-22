@@ -163,7 +163,9 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spa
 .mix-card-bg{width:100%;height:100%;background:linear-gradient(135deg,#1c1a14,#0a0a08);display:flex;align-items:center;justify-content:center;transition:transform .55s ease}
 .mix-card:hover{border-color:rgba(228,184,36,.7);box-shadow:0 0 0 1px rgba(228,184,36,.2),0 0 36px rgba(228,184,36,.22),inset 0 0 24px rgba(0,0,0,.4)}.mix-card:hover .mix-card-bg{transform:scale(1.06)}
 .mix-card:hover .mix-card-bg img{transform:scale(1.06)}
-.merch-card:hover .mix-card-bg,.merch-card:hover .mix-card-bg img{transform:none!important}.merch-card .mix-card-bg{transition:none}
+.merch-card:hover .mix-card-bg,.merch-card:hover .mix-card-bg img{transform:none!important}
+.merch-card .mix-card-bg{transition:background .7s ease}
+.merch-card:hover .mix-card-bg{background:radial-gradient(ellipse at 50% 55%,rgba(228,184,36,.09) 0%,#0a0a07 62%)!important}
 .mix-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:48px;height:48px;border:1px solid #E4B824;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
 .mix-play svg{width:13px} .mix-play svg polygon{fill:#E4B824}
 .mix-card:hover .mix-play{opacity:1}
@@ -171,8 +173,10 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spa
 .mix-info h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--white)}
 .mix-info span{font-size:10px;letter-spacing:3px;text-transform:uppercase;background:var(--gold-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .merch-shirt-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.merch-shirt-back{width:72%;position:absolute;left:0%;top:50%;transform:translateY(-50%);filter:drop-shadow(0 8px 28px rgba(0,0,0,.95))}
-.merch-shirt-front{width:50%;position:absolute;left:22%;top:50%;transform:translateY(-50%);filter:drop-shadow(0 6px 24px rgba(0,0,0,.95)) drop-shadow(0 0 16px rgba(228,184,36,.12))}
+.merch-shirt-back{width:72%;position:absolute;left:0%;top:50%;transform:translateY(-50%);filter:drop-shadow(0 8px 28px rgba(0,0,0,.95));transition:transform .55s ease,filter .55s ease}
+.merch-shirt-front{width:50%;position:absolute;left:22%;top:50%;transform:translateY(-50%);filter:drop-shadow(0 6px 24px rgba(0,0,0,.95)) drop-shadow(0 0 16px rgba(228,184,36,.12));transition:transform .55s ease,filter .55s ease}
+.merch-card:hover .merch-shirt-front{transform:translateY(calc(-50% - 10px));filter:drop-shadow(0 18px 44px rgba(0,0,0,.98)) drop-shadow(0 0 36px rgba(228,184,36,.42))}
+.merch-card:hover .merch-shirt-back{transform:translateY(calc(-50% + 6px));filter:drop-shadow(0 4px 16px rgba(0,0,0,.99))}
 
 /* NEWS */
 #news{background:linear-gradient(rgba(6,6,6,0.80),rgba(6,6,6,0.80)),url('images/news-bg.jpg') center/cover no-repeat}
