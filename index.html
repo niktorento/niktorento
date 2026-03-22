@@ -390,9 +390,13 @@ footer a:hover{color:#E4B824}
         <div class="legend-item"><div class="legend-dot free"></div>Verf&uuml;gbar</div>
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <p style="font-size:13px;color:var(--muted);line-height:1.7"><span style="color:#E4B824;font-size:16px;vertical-align:middle;margin-right:6px">&#9679;</span>Bereits gebuchte Tage. An diesen Tagen kannst du trotzdem eine Anfrage stellen &ndash; die Verf&uuml;gbarkeit ist begrenzt. Schreib direkt an <a href="mailto:niktorento@web.de" style="color:#E4B824;text-decoration:none">niktorento@web.de</a> oder nutze das Formular.</p>
-      <a href="#booking" class="btn-gold" style="text-align:center">Zum Buchungsformular</a>
+    <div style="display:flex;flex-direction:column;gap:0">
+      <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;background:var(--gold-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:18px">N&auml;chste Auftritte</div>
+      <div id="cal-next-dates"></div>
+      <div style="border-top:1px solid rgba(201,150,10,.15);margin-top:20px;padding-top:20px;display:flex;flex-direction:column;gap:14px">
+        <p style="font-size:12px;color:var(--muted);line-height:1.7"><span style="color:#E4B824;font-size:14px;vertical-align:middle;margin-right:6px">&#9679;</span>Bereits gebuchte Tage. Trotzdem Anfrage stellen &ndash; Verf&uuml;gbarkeit ist begrenzt. Schreib an <a href="mailto:niktorento@web.de" style="color:#E4B824;text-decoration:none">niktorento@web.de</a> oder nutze das Formular.</p>
+        <a href="#booking" class="btn-gold" style="text-align:center">Zum Buchungsformular</a>
+      </div>
     </div>
   </div>
 </section>
@@ -657,6 +661,7 @@ let cy=NOW_Y,cm=NOW_M;
 const mn=['JANUAR','FEBRUAR','MÄRZ','APRIL','MAI','JUNI','JULI','AUGUST','SEPTEMBER','OKTOBER','NOVEMBER','DEZEMBER'];
 function isBlocked(y,m,d){return blockedDates.some(b=>b[0]===y&&b[1]===m&&b[2]===d)||bookingDates.some(b=>b.y===y&&b.m===m&&b.d===d)}
 (function(){const today=new Date(NOW_Y,NOW_M,new Date().getDate());const next=bookingDates.filter(b=>new Date(b.y,b.m,b.d)>=today).sort((a,b)=>new Date(a.y,a.m,a.d)-new Date(b.y,b.m,b.d))[0];const et=document.getElementById('news-event-text');const ed=document.getElementById('news-event-date');if(next&&et&&ed){et.textContent=next.city;ed.textContent=next.d+'. '+mn[next.m]+' '+next.y;}else if(et){et.textContent='Demnächst';}})();
+(function(){const today=new Date(NOW_Y,NOW_M,new Date().getDate());const upcoming=bookingDates.filter(b=>new Date(b.y,b.m,b.d)>=today).sort((a,b)=>new Date(a.y,a.m,a.d)-new Date(b.y,b.m,b.d)).slice(0,3);const c=document.getElementById('cal-next-dates');if(!c)return;if(!upcoming.length){c.innerHTML='<p style="font-size:12px;color:var(--faint);letter-spacing:.5px">Keine Dates eingetragen.</p>';return;}c.innerHTML=upcoming.map(b=>`<div style="display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid rgba(201,150,10,.1)"><span style="color:#E4B824;font-size:10px;margin-top:3px;flex-shrink:0">&#9679;</span><div><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--white)">${b.d}. ${mn[b.m]} ${b.y}</div><div style="font-size:11px;color:var(--faint);letter-spacing:.5px;margin-top:3px">${b.city}</div></div></div>`).join('')+'<a href="#" onclick="showDates(null);window.scrollTo(0,0);return false" style="display:inline-block;margin-top:14px;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--gold-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none">Alle Dates ansehen &rarr;</a>';})();
 function renderCalendar(){
   document.getElementById('cal-title').textContent=mn[cm]+' '+cy;
   const g=document.getElementById('cal-grid');g.innerHTML='';
