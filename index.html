@@ -152,6 +152,8 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spa
 /* MIXES */
 #mixes{background:var(--black)}
 .mixes-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px;max-width:1100px}
+.mix-col{display:flex;flex-direction:column}
+.mix-col h2{margin-top:0;margin-bottom:20px}
 .mix-card{position:relative;aspect-ratio:16/9;background:var(--black3);overflow:hidden;display:block;text-decoration:none;border:1px solid rgba(228,184,36,.35);box-shadow:0 0 0 1px rgba(228,184,36,.08),0 0 24px rgba(228,184,36,.12),inset 0 0 24px rgba(0,0,0,.4)}
 .mix-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 55%);z-index:1;transition:opacity .3s}
 .mix-card:hover::before{opacity:.5}
@@ -166,7 +168,7 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spa
 .mix-info span{font-size:10px;letter-spacing:3px;text-transform:uppercase;background:var(--gold-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .merch-shirt-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .merch-shirt-back{width:72%;position:absolute;left:0%;top:50%;transform:translateY(-50%);filter:drop-shadow(0 8px 28px rgba(0,0,0,.95))}
-.merch-shirt-front{width:52%;position:absolute;right:0%;top:50%;transform:translateY(-50%);filter:drop-shadow(0 6px 24px rgba(0,0,0,.95)) drop-shadow(0 0 16px rgba(228,184,36,.12))}
+.merch-shirt-front{width:50%;position:absolute;left:22%;top:50%;transform:translateY(-50%);filter:drop-shadow(0 6px 24px rgba(0,0,0,.95)) drop-shadow(0 0 16px rgba(228,184,36,.12))}
 
 /* NEWS */
 #news{background:linear-gradient(rgba(6,6,6,0.80),rgba(6,6,6,0.80)),url('images/news-bg.jpg') center/cover no-repeat}
@@ -366,14 +368,18 @@ footer a:hover{color:#E4B824}
 <!-- MIXES -->
 <section id="mixes">
   <div class="section-tag fade-in"><span class="stl"></span><span class="stt">Sets &amp; Livesets</span></div>
-  <h2 class="fade-in">MIXES &amp;<br>LIVESETS</h2>
   <div class="mixes-grid fade-in">
-    <a href="https://soundcloud.com/user-762196419/hardtechno-live-set-2026-rave" target="_blank" class="mix-card">
-      <div class="mix-card-bg"><img src="images/leipzig-preview.jpg" alt="Liveset Leipzig" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform .55s ease" onerror="this.style.display='none'"></div>
-      <div class="mix-play"><svg viewBox="0 0 16 16"><polygon points="3,1 15,8 3,15"/></svg></div>
-      <div class="mix-info"><h3>JETZT ANHÖREN</h3><span>SoundCloud &middot; Hard Techno &middot; 2026</span></div>
-    </a>
-    <a href="https://niktorento.myspreadshop.de/" target="_blank" rel="noopener" class="mix-card">
+    <div class="mix-col">
+      <h2>MIXES &amp;<br>LIVESETS</h2>
+      <a href="https://soundcloud.com/user-762196419/hardtechno-live-set-2026-rave" target="_blank" class="mix-card">
+        <div class="mix-card-bg"><img src="images/leipzig-preview.jpg" alt="Liveset Leipzig" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform .55s ease" onerror="this.style.display='none'"></div>
+        <div class="mix-play"><svg viewBox="0 0 16 16"><polygon points="3,1 15,8 3,15"/></svg></div>
+        <div class="mix-info"><h3>JETZT ANHÖREN</h3><span>SoundCloud &middot; Hard Techno &middot; 2026</span></div>
+      </a>
+    </div>
+    <div class="mix-col">
+      <h2>MERCH</h2>
+      <a href="https://niktorento.myspreadshop.de/" target="_blank" rel="noopener" class="mix-card">
       <div class="mix-card-bg" style="background:#0a0a07;overflow:hidden;position:relative">
         <div class="merch-shirt-wrap">
           <img src="images/merch-back.png" class="merch-shirt-back" alt="Nik Torento Merch Rückseite">
@@ -381,7 +387,8 @@ footer a:hover{color:#E4B824}
         </div>
       </div>
       <div class="mix-info"><h3>MERCH SHOP</h3><span>Offizieller Nik Torento Shop &middot; Jetzt shoppen</span></div>
-    </a>
+      </a>
+    </div>
   </div>
 </section>
 
