@@ -160,6 +160,7 @@ h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,76px);letter-spa
 .mix-card-bg{width:100%;height:100%;background:linear-gradient(135deg,#1c1a14,#0a0a08);display:flex;align-items:center;justify-content:center;transition:transform .55s ease}
 .mix-card:hover{border-color:rgba(228,184,36,.7);box-shadow:0 0 0 1px rgba(228,184,36,.2),0 0 36px rgba(228,184,36,.22),inset 0 0 24px rgba(0,0,0,.4)}.mix-card:hover .mix-card-bg{transform:scale(1.06)}
 .mix-card:hover .mix-card-bg img{transform:scale(1.06)}
+.merch-card:hover .mix-card-bg{transform:none!important}.merch-card .mix-card-bg{transition:none}
 .mix-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:48px;height:48px;border:1px solid #E4B824;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
 .mix-play svg{width:13px} .mix-play svg polygon{fill:#E4B824}
 .mix-card:hover .mix-play{opacity:1}
@@ -380,7 +381,7 @@ footer a:hover{color:#E4B824}
     </div>
     <div class="mix-col">
       <h2>MERCH</h2>
-      <a href="https://niktorento.myspreadshop.de/" target="_blank" rel="noopener" class="mix-card">
+      <a href="https://niktorento.myspreadshop.de/" target="_blank" rel="noopener" class="mix-card merch-card">
       <div class="mix-card-bg" style="background:#0a0a07;overflow:hidden;position:relative">
         <div class="merch-shirt-wrap">
           <img src="images/merch-back.png" class="merch-shirt-back" alt="Nik Torento Merch Rückseite">
