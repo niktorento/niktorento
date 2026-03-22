@@ -459,7 +459,7 @@ footer a:hover{color:#E4B824}
       <p>Kostenlos &amp; unverbindlich &mdash; Antwort innerhalb 24h</p>
       <div class="form-row">
         <div class="form-field"><label>Name *</label><input type="text" name="name" placeholder="Dein Name" required></div>
-        <div class="form-field"><label>E-Mail *</label><input type="email" name="_replyto" placeholder="deine@email.de" required></div>
+        <div class="form-field"><label>E-Mail *</label><input type="email" name="email" placeholder="deine@email.de" required></div>
       </div>
       <div class="form-row">
         <div class="form-field"><label>Datum *</label><input type="text" name="datum" id="booking-datum" placeholder="Datum wählen…" readonly style="cursor:pointer"></div>
@@ -740,7 +740,7 @@ renderCalendar();
 // Booking form
 async function sendBooking(btn){
   const inp=document.querySelectorAll('.booking-form input,.booking-form textarea,.booking-form select');
-  const required=['name','_replyto','datum','event_art'];
+  const required=['name','email','datum','event_art'];
   let ok=true;inp.forEach(i=>{if(required.includes(i.name)&&!i.value.trim())ok=false});
   const msg=document.getElementById('booking-msg');
   if(!ok){
