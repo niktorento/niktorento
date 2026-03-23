@@ -702,13 +702,13 @@ window.addEventListener('popstate',function(){
 // Calendar
 const blockedDates=[[2026,2,28],[2026,3,7],[2026,3,12],[2026,4,9],[2026,4,10],[2026,5,7],[2026,5,20],[2026,6,3],[2026,6,18],[2026,7,15],[2026,8,2],[2026,8,3],[2026,8,4],[2026,8,5],[2026,8,6],[2026,8,7],[2026,8,8],[2026,8,9],[2026,8,24],[2026,9,30]];   // Blocker: [[YYYY,M,D], ...] — goldener Punkt, keine Stadt
 const bookingDates=[{y:2026,m:3,d:30,city:"Braunschweig"},{y:2026,m:4,d:30,city:"Leipzig"},{y:2026,m:6,d:4,city:"Oberhausen"},{y:2026,m:6,d:8,city:"Neustadt-Glewe"},{y:2026,m:6,d:9,city:"Neustadt-Glewe"},{y:2026,m:6,d:10,city:"Neustadt-Glewe"},{y:2026,m:6,d:11,city:"Neustadt-Glewe"},{y:2026,m:6,d:12,city:"Neustadt-Glewe"},{y:2026,m:6,d:23,city:"Bärwalder See"},{y:2026,m:6,d:24,city:"Bärwalder See"},{y:2026,m:6,d:25,city:"Bärwalder See"}];   // Bookings: [{y,m,d,city}, ...] — goldener Punkt + Stadt
-const _now=new Date();
-const NOW_Y=_now.getFullYear(),NOW_M=_now.getMonth();
-let cy=NOW_Y,cm=NOW_M;
+function nowY(){return new Date().getFullYear()}
+function nowM(){return new Date().getMonth()}
+let cy=nowY(),cm=nowM();
 const mn=['JANUAR','FEBRUAR','MÄRZ','APRIL','MAI','JUNI','JULI','AUGUST','SEPTEMBER','OKTOBER','NOVEMBER','DEZEMBER'];
 function isBlocked(y,m,d){return blockedDates.some(b=>b[0]===y&&b[1]===m&&b[2]===d)||bookingDates.some(b=>b.y===y&&b.m===m&&b.d===d)}
-(function(){const today=new Date(NOW_Y,NOW_M,new Date().getDate());const next=bookingDates.filter(b=>new Date(b.y,b.m,b.d)>=today).sort((a,b)=>new Date(a.y,a.m,a.d)-new Date(b.y,b.m,b.d))[0];const et=document.getElementById('news-event-text');const ed=document.getElementById('news-event-date');if(next&&et&&ed){et.textContent=next.city;ed.textContent=next.d+'. '+mn[next.m]+' '+next.y;}else if(et){et.textContent='Demnächst';}})();
-(function(){const today=new Date(NOW_Y,NOW_M,new Date().getDate());const upcoming=bookingDates.filter(b=>new Date(b.y,b.m,b.d)>=today).sort((a,b)=>new Date(a.y,a.m,a.d)-new Date(b.y,b.m,b.d)).slice(0,3);const c=document.getElementById('cal-next-dates');if(!c)return;if(!upcoming.length){c.innerHTML='<p style="font-size:12px;color:var(--faint);letter-spacing:.5px">Keine Dates eingetragen.</p>';return;}c.innerHTML=upcoming.map(b=>`<div style="display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid rgba(201,150,10,.1)"><span style="color:#E4B824;font-size:13px;margin-top:4px;flex-shrink:0">&#9679;</span><div><div style="font-size:17px;letter-spacing:2px;text-transform:uppercase;color:var(--white);font-weight:500">${b.d}. ${mn[b.m]} ${b.y}</div><div style="font-size:15px;color:var(--faint);letter-spacing:.5px;margin-top:6px">${b.city}</div></div></div>`).join('')+'<a href="#" onclick="showDates(null);window.scrollTo(0,0);return false" style="display:inline-block;margin-top:18px;font-size:12px;letter-spacing:2px;text-transform:uppercase;background:var(--gold-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none">Alle Dates ansehen &rarr;</a>';})();
+(function(){const today=new Date();today.setHours(0,0,0,0);const next=bookingDates.filter(b=>new Date(b.y,b.m,b.d)>=today).sort((a,b)=>new Date(a.y,a.m,a.d)-new Date(b.y,b.m,b.d))[0];const et=document.getElementById('news-event-text');const ed=document.getElementById('news-event-date');if(next&&et&&ed){et.textContent=next.city;ed.textContent=next.d+'. '+mn[next.m]+' '+next.y;}else if(et){et.textContent='Demnächst';}})();
+(function(){const today=new Date();today.setHours(0,0,0,0);const upcoming=bookingDates.filter(b=>new Date(b.y,b.m,b.d)>=today).sort((a,b)=>new Date(a.y,a.m,a.d)-new Date(b.y,b.m,b.d)).slice(0,3);const c=document.getElementById('cal-next-dates');if(!c)return;if(!upcoming.length){c.innerHTML='<p style="font-size:12px;color:var(--faint);letter-spacing:.5px">Keine Dates eingetragen.</p>';return;}c.innerHTML=upcoming.map(b=>`<div style="display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid rgba(201,150,10,.1)"><span style="color:#E4B824;font-size:13px;margin-top:4px;flex-shrink:0">&#9679;</span><div><div style="font-size:17px;letter-spacing:2px;text-transform:uppercase;color:var(--white);font-weight:500">${b.d}. ${mn[b.m]} ${b.y}</div><div style="font-size:15px;color:var(--faint);letter-spacing:.5px;margin-top:6px">${b.city}</div></div></div>`).join('')+'<a href="#" onclick="showDates(null);window.scrollTo(0,0);return false" style="display:inline-block;margin-top:18px;font-size:12px;letter-spacing:2px;text-transform:uppercase;background:var(--gold-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none">Alle Dates ansehen &rarr;</a>';})();
 function renderCalendar(){
   document.getElementById('cal-title').textContent=mn[cm]+' '+cy;
   const g=document.getElementById('cal-grid');g.innerHTML='';
@@ -726,23 +726,32 @@ function renderCalendar(){
     else if(!isPast){e.classList.add('clickable');e.addEventListener('click',function(){document.getElementById('booking').scrollIntoView({behavior:'smooth'});});}
     g.appendChild(e)}
   // Buttons an Grenzen dimmen
-  const atMin=(cy===NOW_Y&&cm===NOW_M);
-  const atMax=(cy===NOW_Y+1&&cm===NOW_M)||(cy>NOW_Y+1);
+  const atMin=(cy===nowY()&&cm===nowM());
+  const atMax=(cy===nowY()+1&&cm===nowM())||(cy>nowY()+1);
   document.getElementById('cal-prev').style.opacity=atMin?'0.2':'1';
   document.getElementById('cal-prev').style.cursor=atMin?'default':'pointer';
   document.getElementById('cal-next').style.opacity=atMax?'0.2':'1';
   document.getElementById('cal-next').style.cursor=atMax?'default':'pointer';
 }
 function prevMonth(){
-  if(cy===NOW_Y&&cm===NOW_M)return;
+  if(cy===nowY()&&cm===nowM())return;
   if(--cm<0){cm=11;cy--}renderCalendar()
 }
 function nextMonth(){
   const nCm=(cm+1)%12,nCy=cm===11?cy+1:cy;
-  if(nCy>NOW_Y+1||(nCy===NOW_Y+1&&nCm>NOW_M))return;
+  if(nCy>nowY()+1||(nCy===nowY()+1&&nCm>nowM()))return;
   cm=nCm;cy=nCy;renderCalendar()
 }
 renderCalendar();
+// Mitternacht-Auto-Refresh: Kalender aktualisiert sich automatisch zum neuen Tag/Monat
+(function schedMidnight(){
+  const n=new Date(),msLeft=new Date(n.getFullYear(),n.getMonth(),n.getDate()+1)-n;
+  setTimeout(function(){
+    if(cy===n.getFullYear()&&cm===n.getMonth()){cy=nowY();cm=nowM();}
+    renderCalendar();
+    schedMidnight();
+  },msLeft);
+})();
 
 // Booking form
 async function sendBooking(btn){
